@@ -1,0 +1,60 @@
+---
+title: "Livestock Numbers (1971-2019)"
+format: html
+---
+
+Exploring New Zealand livestock population data from 1971 to 2019.
+
+```{r}
+#| message: false
+library(tidyverse)
+```
+
+```{r}
+livestock <- read_csv("livestock-numbers-clean-1971-2019.csv")
+livestock
+```
+
+## Data Overview
+
+```{r}
+cat("Animals:", paste(unique(livestock$animal), collapse = ", "), "\n")
+cat("Geography types:", paste(unique(livestock$geography_type), collapse = ", "), "\n")
+```
+
+```{r}
+livestock |>
+  filter(geography_type == "New Zealand") |>
+  summarise(
+    `Min (millions)`  = round(min(count, na.rm = TRUE) / 1e6, 2),
+    `Max (millions)`  = round(max(count, na.rm = TRUE) / 1e6, 2),
+    `Mean (millions)` = round(mean(count, na.rm = TRUE) / 1e6, 2),
+    .by = animal
+  ) |>
+  arrange(animal)
+```
+
+## National Trends Over Time
+
+```{r}
+#| fig-width: 10
+#| fig-height: 7
+nz <- livestock |>
+  filter(
+    geography_type == "New Zealand",
+    animal != "Total cattle",
+    !is.na(count)
+  ) |>
+  mutate(count_millions = count / 1e6)
+
+ggplot(nz, aes(x = year, y = count_millions, colour = animal)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 1.5) +
+  facet_wrap(~animal, scales = "free_y", ncol = 2) +
+  labs(
+    title = "New Zealand Livestock Numbers (1971-2019)",
+    x = "Year",
+    y = "Count (millions)",
+    colour = "Animal"
+  )
+```
