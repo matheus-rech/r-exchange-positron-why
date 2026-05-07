@@ -3,3 +3,14 @@ dist/
 .DS_Store
 .playwright-mcp/
 audit-screenshots*/
+
+# Working artifacts not included in public repo
+.claude/
+AGENTS.md
+BRAND.md
+TALK.md
+docs/
+src/*.js
+
+.RData
+.Rhistory
