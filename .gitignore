@@ -10,7 +10,23 @@ AGENTS.md
 BRAND.md
 TALK.md
 docs/
-src/*.js
+my-data-science-proj/
+src/main.js
+src/slides.js
+src/types.js
 
-.RData
-.Rhistory
+# Unused media
+public/images/notebook-walkthrough.mov
+public/images/User Interface RStudio vs Positron.jpeg
+
+# Iconography: ignore everything, then un-ignore only the SVGs we use
+public/Iconography/Light_Mode/
+public/Iconography/Dark_Mode/png/
+public/Iconography/Dark_Mode/svg/*
+!public/Iconography/Dark_Mode/svg/Posit-Icons-DarkMode_Code_Drk-Md.svg
+!public/Iconography/Dark_Mode/svg/Posit-Icons-DarkMode_Insight_Drk-Md.svg
+!public/Iconography/Dark_Mode/svg/Posit-Icons-DarkMode_Data1_Drk-Md.svg
+!public/Iconography/Dark_Mode/svg/Posit-Icons-DarkMode_Data2_Drk-Md.svg
+!public/Iconography/Dark_Mode/svg/Posit-Icons-DarkMode_Update_Drk-Md.svg
+!public/Iconography/Dark_Mode/svg/Posit-Icons-DarkMode_Browser_Drk-Md.svg
+!public/Iconography/Dark_Mode/svg/Posit-Icons-DarkMode_dashboards-Drk-Md.svg
